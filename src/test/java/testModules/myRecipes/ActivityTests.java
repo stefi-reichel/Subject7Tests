@@ -20,7 +20,7 @@ public class ActivityTests extends InitTest {
         OnboardingPage onboarding = new OnboardingPage();
         onboarding.onboarding(); }
 
-    @Test(enabled = false, dataProvider = "user", dataProviderClass = LoginCredentialsDataProvider.class)
+    @Test(enabled = true, dataProvider = "user", dataProviderClass = LoginCredentialsDataProvider.class)
     public void loginUserWCU(String data){
         ActivityPage activity = new ActivityPage();
         LoginFBSettingsPage login = new LoginFBSettingsPage();
@@ -33,7 +33,7 @@ public class ActivityTests extends InitTest {
         loginCredentials.sendUserDataOnFB(data);
     }
 
-    @Test(enabled = false, priority = 1, dataProvider = "pass", dataProviderClass = LoginCredentialsDataProvider.class)
+    @Test(enabled = true, priority = 1, dataProvider = "pass", dataProviderClass = LoginCredentialsDataProvider.class)
     public void loginUserWCPAndDelete(String data){
         LoginFBOnboardingPage loginCredentials = new LoginFBOnboardingPage();
         ActivityPage activity = new ActivityPage();
@@ -47,7 +47,7 @@ public class ActivityTests extends InitTest {
         activity.deleteUser();
     }
 
-    @Test(enabled = true, priority = 1)
+    @Test(enabled = false, priority = 1)
     public void loginUserWOCAndDelete(){
         ActivityPage activity = new ActivityPage();
         LoginFBSettingsPage login = new LoginFBSettingsPage();
