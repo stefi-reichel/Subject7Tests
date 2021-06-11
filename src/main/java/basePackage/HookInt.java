@@ -15,5 +15,4 @@ public class HookInt extends Base {
      public static void closeDriver(){
          closeDriverBase();
     }
-
 }

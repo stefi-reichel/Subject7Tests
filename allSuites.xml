@@ -3,7 +3,6 @@
 
 <suite name="AllSuites" verbose="1" preserve-order="true">
     <suite-files>
-        <suite-file path="suitesFolder/discoverVeg.xml"/>
-        <suite-file path="suitesFolder/searchSuite.xml"/>
+        <suite-file path="suitesFolder/myRecipesAndSettingsSuite.xml"/>
     </suite-files>
 </suite>

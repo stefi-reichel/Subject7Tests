@@ -108,14 +108,28 @@ public class SearchDataProvider {
         };
     }
 
+
+
     //----------------------------------------------------------------------------------------
-    //SEARCH RECIPE - LoginFBRecipeIMadeThisNewUserTests class
+    //SEARCH RECIPE FOR LOGIN
     //----------------------------------------------------------------------------------------
 
     @DataProvider(name = "searchRecipe")
     public static Object[][] fetchData10() throws Exception {
         return new Object[][]{
                 {"Pizza In A Mug"},
+        };
+    }
+
+
+    //----------------------------------------------------------------------------------------
+    //SEARCH COMPILATION FOR LOGIN
+    //----------------------------------------------------------------------------------------
+
+    @DataProvider(name = "searchComp")
+    public static Object[][] fetchData11() throws Exception {
+        return new Object[][]{
+                {"Cookies For All Your Sugar Cravings"},
         };
     }
 }

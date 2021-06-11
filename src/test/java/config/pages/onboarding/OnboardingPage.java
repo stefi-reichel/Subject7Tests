@@ -1,91 +1,81 @@
 package config.pages.onboarding;
 
-import config.pages.BasePage;
-import io.appium.java_client.ios.IOSElement;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import basePackage.Base;
+import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class OnboardingPage extends BasePage {
+import java.util.concurrent.TimeUnit;
+
+
+public class OnboardingPage extends Base {
 
     //Catching elements
-    @iOSXCUITFindBy(accessibility = "Get started")
-    private IOSElement getStartedButton;
+    private final By getStartedButton = MobileBy.AccessibilityId("Get started");
 
-    @iOSXCUITFindBy(xpath = "//*[contains(@name,'Nope, show me all recipes')] ")
-    private IOSElement meatButton;
+    private final By meatButton = MobileBy.AccessibilityId("Nope, show me all recipes");
 
-    @iOSXCUITFindBy(xpath = "//*[contains(@name,'Yes, hide recipes with meat')] ")
-    private IOSElement vegButton;
+    private final By vegButton = MobileBy.AccessibilityId("Yes, hide recipes with meat");
 
-    @iOSXCUITFindBy(accessibility = "Allow")
-    private IOSElement allowButton;
+    private final By allowButton = MobileBy.AccessibilityId("Allow");
 
     //for asserts
-    public boolean getStartedButtonIsPresent(){
-        return getStartedButton.isDisplayed();
-    }
+    public boolean getStartedButtonIsPresent(){ return driver.findElement(getStartedButton).isDisplayed(); }
 
-    public boolean meatButtonIsPresent(){
-        return meatButton.isDisplayed();
-    }
+    public boolean meatButtonIsPresent(){ return driver.findElement(meatButton).isDisplayed(); }
 
-    public boolean vegButtonIsPresent(){
-        return vegButton.isDisplayed();
-    }
+    public boolean vegButtonIsPresent(){ return driver.findElement(vegButton).isDisplayed(); }
 
-    public boolean allowButtonIsPresent(){
-        return allowButton.isDisplayed();
-    }
+    public boolean allowButtonIsPresent(){ return driver.findElement(allowButton).isDisplayed(); }
 
     //Actions
     public void tapGetStarted() {
-        getStartedButton.click();
+        waitForGetStartedButton();
+        driver.findElement(getStartedButton).click();
         System.out.println("Tapped Get Started Button");
     }
 
     public void tapMeatButton() {
-        meatButton.click();
+        waitForMeatButton();
+        driver.findElement(meatButton).click();
         System.out.println("Tapped Meat Button");
     }
 
     public void tapVegButton() {
-        vegButton.click();
+        waitForVegButton();
+        driver.findElement(vegButton).click();
         System.out.println("Tapped Veggie Button");
     }
 
     public void tapAllowNotiButton() {
-        allowButton.click();
+        driver.findElement(allowButton).click();
         System.out.println("Tapped Allow Button");
     }
 
     public void onboarding(){
         waitForGetStartedButton();
-        getStartedButton.click();
+        driver.findElement(getStartedButton).click();
         System.out.println("Tapped Get Started Button");
         waitForMeatButton();
-        meatButton.click();
+        driver.findElement(meatButton).click();
         System.out.println("Tapped Meat Button");
-        allowButton.click();
+        driver.findElement(allowButton).click();
         System.out.println("Tapped Allow Button");
     }
 
     //Waiters
-    WebDriverWait wait = new WebDriverWait(driver,50);
+    WebDriverWait wait = new WebDriverWait(driver,40);
 
     public void waitForGetStartedButton() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.xpath("//*[contains(@name,'Get started')]")));
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(getStartedButton)));
     }
 
     public void waitForMeatButton() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.xpath("//*[contains(@name,'Nope, show me all recipes')]")));
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(meatButton)));
     }
 
     public void waitForVegButton() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated
-                (By.xpath("//*[contains(@name,'Nope, show me all recipes')]")));
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(vegButton)));
     }
 }
